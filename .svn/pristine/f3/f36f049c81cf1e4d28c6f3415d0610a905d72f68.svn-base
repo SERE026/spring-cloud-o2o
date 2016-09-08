@@ -1,0 +1,11 @@
+package com.didispace.service;
+
+import com.didispace.model.City;
+
+public interface CityService {
+	
+	public City findCityById(Integer id);
+	
+	public int updateCityName(Integer id);
+	
+}

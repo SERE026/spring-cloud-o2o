@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.merchant.dao.MerchantsMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.merchant.model.MerchantsMessage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="msg_content" property="msgContent" jdbcType="VARCHAR" />
+    <result column="create_date" property="createDate" jdbcType="TIMESTAMP" />
+    <result column="read_state" property="readState" jdbcType="VARCHAR" />
+    <result column="merchants_id" property="merchantsId" jdbcType="INTEGER" />
+    <result column="send_user" property="sendUser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, msg_content, create_date, read_state, merchants_id, send_user
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_merchants_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_merchants_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.merchant.model.MerchantsMessage" >
+    insert into t_merchants_message (id, msg_content, create_date, 
+      read_state, merchants_id, send_user
+      )
+    values (#{id,jdbcType=INTEGER}, #{msgContent,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{readState,jdbcType=VARCHAR}, #{merchantsId,jdbcType=INTEGER}, #{sendUser,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.merchant.model.MerchantsMessage" >
+    insert into t_merchants_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="msgContent != null" >
+        msg_content,
+      </if>
+      <if test="createDate != null" >
+        create_date,
+      </if>
+      <if test="readState != null" >
+        read_state,
+      </if>
+      <if test="merchantsId != null" >
+        merchants_id,
+      </if>
+      <if test="sendUser != null" >
+        send_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="msgContent != null" >
+        #{msgContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readState != null" >
+        #{readState,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantsId != null" >
+        #{merchantsId,jdbcType=INTEGER},
+      </if>
+      <if test="sendUser != null" >
+        #{sendUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.merchant.model.MerchantsMessage" >
+    update t_merchants_message
+    <set >
+      <if test="msgContent != null" >
+        msg_content = #{msgContent,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null" >
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="readState != null" >
+        read_state = #{readState,jdbcType=VARCHAR},
+      </if>
+      <if test="merchantsId != null" >
+        merchants_id = #{merchantsId,jdbcType=INTEGER},
+      </if>
+      <if test="sendUser != null" >
+        send_user = #{sendUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.merchant.model.MerchantsMessage" >
+    update t_merchants_message
+    set msg_content = #{msgContent,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      read_state = #{readState,jdbcType=VARCHAR},
+      merchants_id = #{merchantsId,jdbcType=INTEGER},
+      send_user = #{sendUser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

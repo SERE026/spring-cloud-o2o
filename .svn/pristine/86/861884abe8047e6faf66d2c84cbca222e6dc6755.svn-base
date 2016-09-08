@@ -1,0 +1,20 @@
+package com.merchant.service;
+
+import com.merchant.dto.ResultMessage;
+import com.merchant.form.MpForm;
+import com.merchant.model.MerchantsMp;
+
+
+public interface MerchantsMpService {
+
+	/**
+	 * 添加
+	 * @param data
+	 * @return
+	 */
+	ResultMessage add(MerchantsMp data);
+
+	ResultMessage queryByPage(MpForm form);
+	 
+	
+}

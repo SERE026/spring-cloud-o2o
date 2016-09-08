@@ -1,0 +1,17 @@
+package com.merchant.dao;
+
+import com.merchant.model.MerchantsWxSupplier;
+
+public interface MerchantsWxSupplierMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(MerchantsWxSupplier record);
+
+    int insertSelective(MerchantsWxSupplier record);
+
+    MerchantsWxSupplier selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(MerchantsWxSupplier record);
+
+    int updateByPrimaryKey(MerchantsWxSupplier record);
+}

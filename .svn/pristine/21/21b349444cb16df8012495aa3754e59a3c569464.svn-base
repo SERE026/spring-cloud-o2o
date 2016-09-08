@@ -1,0 +1,32 @@
+package com.merchant.form;
+
+public class MpForm {
+	private int offset = 0;
+	private int pageSize = 10;
+	private MpCdtQueryBean queryConditions;
+
+	public int getOffset() {
+		return offset;
+	}
+
+	public void setOffset(int offset) {
+		this.offset = offset;
+	}
+
+	public int getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(int pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	public MpCdtQueryBean getQueryConditions() {
+		return queryConditions;
+	}
+
+	public void setQueryConditions(MpCdtQueryBean queryConditions) {
+		this.queryConditions = queryConditions;
+	}
+
+}

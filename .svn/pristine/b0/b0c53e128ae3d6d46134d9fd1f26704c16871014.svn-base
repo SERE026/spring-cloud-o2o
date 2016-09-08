@@ -1,0 +1,14 @@
+jdbc.driverClassName=com.mysql.jdbc.Driver
+jdbc.url=jdbc:mysql://127.0.0.1:3306/cloud?useUnicode=true&characterEncoding=UTF-8
+jdbc.username=root
+jdbc.password=root
+jdbc.max-active=10
+jdbc.maxActive=5
+jdbc.maxIdle=3
+
+
+
+spring.application.name=order-service
+server.port=3101
+eureka.client.serviceUrl.defaultZone=http://localhost:1001/eureka/
+

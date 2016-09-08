@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.merchant.dao.MerchantsMpMapper" >
+ 
+ 
+  <resultMap id="BaseResultMap" type="com.merchant.model.MerchantsMp" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="wx_gh" property="wxGh" jdbcType="VARCHAR" />
+    <result column="wx_app_id" property="wxAppId" jdbcType="VARCHAR" />
+    <result column="wx_app_secret" property="wxAppSecret" jdbcType="VARCHAR" />
+    <result column="wx_merchants_no" property="wxMerchantsNo" jdbcType="VARCHAR" />
+    <result column="wx_merchants_key" property="wxMerchantsKey" jdbcType="VARCHAR" />
+    <result column="wx_name" property="wxName" jdbcType="VARCHAR" />
+    <result column="use_status" property="useStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <resultMap id="queryByPageMap" type="com.merchant.model.MerchantsMp" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="wx_app_id" property="wxAppId" jdbcType="VARCHAR" />
+    <result column="wx_merchants_no" property="wxMerchantsNo" jdbcType="VARCHAR" />
+    <result column="wx_name" property="wxName" jdbcType="VARCHAR" />
+    <result column="use_status" property="useStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    id, wx_gh, wx_app_id, wx_app_secret, wx_merchants_no, wx_merchants_key, wx_name, 
+    use_status
+  </sql>
+ 
+ 
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_merchants_mp
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  
+  <select id="queryByPage" resultMap="queryByPageMap" parameterType="com.merchant.form.MerchantsMpForm" >
+    select 
+     id,  wx_app_id, wx_merchants_no,  wx_name, use_status
+    from t_merchants_mp
+    where 1==1 
+    <if test="queryConditions != null" >
+      <if test="wxGh != null and wxGh != ''   " >
+        and wx_gh like   '%'+${queryConditions.wxGh}+'%'  
+      </if>
+      <if test="wxAppId != null and wxAppId != ''   " >
+        and wx_app_id = ${queryConditions.wxAppId}
+      </if>
+      <if test="wxMerchantsNo != null and wxMerchantsNo != ''   " >
+        and wx_merchants_no like   '%'+${queryConditions.wxMerchantsNo}+'%'  
+      </if>
+      <if test="wxName != null and wxName != ''   " >
+        and wx_name like   '%'+${queryConditions.wx_name}+'%'  
+      </if>
+      <if test="useStatus != null and useStatus != ''   " >
+        and use_status like   '%'+${queryConditions.useStatus}+'%'  
+      </if>
+    </if>
+    limit ${offset},${pageSize}
+  </select>
+  
+  
+  <select id="queryByPageForMerchants" resultMap="queryByPageMap" >
+    select 
+     id,  wx_app_id, wx_merchants_no,  wx_name, use_status
+    from t_merchants_mp t1
+    join t_merchants_mp_supplier t2
+    on t1.id = t2.mp_id
+    where 1==1 and t2.merchants_id = ${merchantsId}
+    limit ${offset},${pageSize}
+  </select>
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_merchants_mp
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  
+  
+  <insert id="insert" parameterType="com.merchant.model.MerchantsMp" >
+    insert into t_merchants_mp (id, wx_gh, wx_app_id, 
+      wx_app_secret, wx_merchants_no, wx_merchants_key, 
+      wx_name, use_status)
+    values (#{id,jdbcType=INTEGER}, #{wxGh,jdbcType=VARCHAR}, #{wxAppId,jdbcType=VARCHAR}, 
+      #{wxAppSecret,jdbcType=VARCHAR}, #{wxMerchantsNo,jdbcType=VARCHAR}, #{wxMerchantsKey,jdbcType=VARCHAR}, 
+      #{wxName,jdbcType=VARCHAR}, #{useStatus,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <insert id="insertSelective" parameterType="com.merchant.model.MerchantsMp" >
+    insert into t_merchants_mp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="wxGh != null" >
+        wx_gh,
+      </if>
+      <if test="wxAppId != null" >
+        wx_app_id,
+      </if>
+      <if test="wxAppSecret != null" >
+        wx_app_secret,
+      </if>
+      <if test="wxMerchantsNo != null" >
+        wx_merchants_no,
+      </if>
+      <if test="wxMerchantsKey != null" >
+        wx_merchants_key,
+      </if>
+      <if test="wxName != null" >
+        wx_name,
+      </if>
+      <if test="useStatus != null" >
+        use_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="wxGh != null" >
+        #{wxGh,jdbcType=VARCHAR},
+      </if>
+      <if test="wxAppId != null" >
+        #{wxAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxAppSecret != null" >
+        #{wxAppSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wxMerchantsNo != null" >
+        #{wxMerchantsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="wxMerchantsKey != null" >
+        #{wxMerchantsKey,jdbcType=VARCHAR},
+      </if>
+      <if test="wxName != null" >
+        #{wxName,jdbcType=VARCHAR},
+      </if>
+      <if test="useStatus != null" >
+        #{useStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterType="com.merchant.model.MerchantsMp" >
+    update t_merchants_mp
+    <set >
+      <if test="wxGh != null" >
+        wx_gh = #{wxGh,jdbcType=VARCHAR},
+      </if>
+      <if test="wxAppId != null" >
+        wx_app_id = #{wxAppId,jdbcType=VARCHAR},
+      </if>
+      <if test="wxAppSecret != null" >
+        wx_app_secret = #{wxAppSecret,jdbcType=VARCHAR},
+      </if>
+      <if test="wxMerchantsNo != null" >
+        wx_merchants_no = #{wxMerchantsNo,jdbcType=VARCHAR},
+      </if>
+      <if test="wxMerchantsKey != null" >
+        wx_merchants_key = #{wxMerchantsKey,jdbcType=VARCHAR},
+      </if>
+      <if test="wxName != null" >
+        wx_name = #{wxName,jdbcType=VARCHAR},
+      </if>
+      <if test="useStatus != null" >
+        use_status = #{useStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  <update id="updateByPrimaryKey" parameterType="com.merchant.model.MerchantsMp" >
+    update t_merchants_mp
+    set wx_gh = #{wxGh,jdbcType=VARCHAR},
+      wx_app_id = #{wxAppId,jdbcType=VARCHAR},
+      wx_app_secret = #{wxAppSecret,jdbcType=VARCHAR},
+      wx_merchants_no = #{wxMerchantsNo,jdbcType=VARCHAR},
+      wx_merchants_key = #{wxMerchantsKey,jdbcType=VARCHAR},
+      wx_name = #{wxName,jdbcType=VARCHAR},
+      use_status = #{useStatus,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+</mapper>

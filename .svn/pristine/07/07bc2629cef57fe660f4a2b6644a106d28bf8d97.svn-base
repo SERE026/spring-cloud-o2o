@@ -1,0 +1,203 @@
+package com.merchant.model;
+
+public class MerchantsSupplier {
+    private Integer id;
+
+    private String merchantsName;
+
+    private String province;
+
+    private String city;
+
+    private String area;
+
+    private String address;
+
+    private String longitude;
+
+    private String latitude;
+
+    private String contact;
+
+    private String phone;
+
+    private String auditStatus;
+
+    private String idCard;
+
+    private String idCardUrl;
+
+    private String businessLicense;
+
+    private String parentId;
+
+    private String paymentChannel;
+
+    private String supllierType;
+
+    private String storeState;
+
+    private String serviceRadius;
+
+    private String merchantsLogoUrl;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getMerchantsName() {
+        return merchantsName;
+    }
+
+    public void setMerchantsName(String merchantsName) {
+        this.merchantsName = merchantsName == null ? null : merchantsName.trim();
+    }
+
+    public String getProvince() {
+        return province;
+    }
+
+    public void setProvince(String province) {
+        this.province = province == null ? null : province.trim();
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city == null ? null : city.trim();
+    }
+
+    public String getArea() {
+        return area;
+    }
+
+    public void setArea(String area) {
+        this.area = area == null ? null : area.trim();
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude == null ? null : longitude.trim();
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude == null ? null : latitude.trim();
+    }
+
+    public String getContact() {
+        return contact;
+    }
+
+    public void setContact(String contact) {
+        this.contact = contact == null ? null : contact.trim();
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone == null ? null : phone.trim();
+    }
+
+    public String getAuditStatus() {
+        return auditStatus;
+    }
+
+    public void setAuditStatus(String auditStatus) {
+        this.auditStatus = auditStatus == null ? null : auditStatus.trim();
+    }
+
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard == null ? null : idCard.trim();
+    }
+
+    public String getIdCardUrl() {
+        return idCardUrl;
+    }
+
+    public void setIdCardUrl(String idCardUrl) {
+        this.idCardUrl = idCardUrl == null ? null : idCardUrl.trim();
+    }
+
+    public String getBusinessLicense() {
+        return businessLicense;
+    }
+
+    public void setBusinessLicense(String businessLicense) {
+        this.businessLicense = businessLicense == null ? null : businessLicense.trim();
+    }
+
+    public String getParentId() {
+        return parentId;
+    }
+
+    public void setParentId(String parentId) {
+        this.parentId = parentId == null ? null : parentId.trim();
+    }
+
+    public String getPaymentChannel() {
+        return paymentChannel;
+    }
+
+    public void setPaymentChannel(String paymentChannel) {
+        this.paymentChannel = paymentChannel == null ? null : paymentChannel.trim();
+    }
+
+    public String getSupllierType() {
+        return supllierType;
+    }
+
+    public void setSupllierType(String supllierType) {
+        this.supllierType = supllierType == null ? null : supllierType.trim();
+    }
+
+    public String getStoreState() {
+        return storeState;
+    }
+
+    public void setStoreState(String storeState) {
+        this.storeState = storeState == null ? null : storeState.trim();
+    }
+
+    public String getServiceRadius() {
+        return serviceRadius;
+    }
+
+    public void setServiceRadius(String serviceRadius) {
+        this.serviceRadius = serviceRadius == null ? null : serviceRadius.trim();
+    }
+
+    public String getMerchantsLogoUrl() {
+        return merchantsLogoUrl;
+    }
+
+    public void setMerchantsLogoUrl(String merchantsLogoUrl) {
+        this.merchantsLogoUrl = merchantsLogoUrl == null ? null : merchantsLogoUrl.trim();
+    }
+}

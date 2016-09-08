@@ -1,0 +1,11 @@
+package com.merchant.service;
+
+import com.merchant.model.City; 
+
+public interface CityService {
+	
+	public City findCityById(Integer id);
+	
+	public int updateCityName(Integer id);
+	
+}

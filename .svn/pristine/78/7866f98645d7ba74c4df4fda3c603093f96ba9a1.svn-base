@@ -1,0 +1,51 @@
+package com.merchant.form;
+
+public class MpCdtQueryBean {
+
+	private String wxGh;
+	private String wxAppId;
+	private String wxMerchantsNo;
+	private String wxName;
+	private String useStatus;
+
+	public String getWxGh() {
+		return wxGh;
+	}
+
+	public void setWxGh(String wxGh) {
+		this.wxGh = wxGh;
+	}
+
+	public String getWxAppId() {
+		return wxAppId;
+	}
+
+	public void setWxAppId(String wxAppId) {
+		this.wxAppId = wxAppId;
+	}
+
+	public String getWxMerchantsNo() {
+		return wxMerchantsNo;
+	}
+
+	public void setWxMerchantsNo(String wxMerchantsNo) {
+		this.wxMerchantsNo = wxMerchantsNo;
+	}
+
+	public String getWxName() {
+		return wxName;
+	}
+
+	public void setWxName(String wxName) {
+		this.wxName = wxName;
+	}
+
+	public String getUseStatus() {
+		return useStatus;
+	}
+
+	public void setUseStatus(String useStatus) {
+		this.useStatus = useStatus;
+	}
+
+}

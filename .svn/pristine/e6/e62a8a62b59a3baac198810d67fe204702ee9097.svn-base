@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Vendor: Pivotal Software, Inc.
+Implementation-Title: token_service
+Implementation-Version: 1.0.0
+Implementation-Vendor-Id: com.didispace
+Build-Jdk: 1.7.0_79
+Built-By: leiyi
+Created-By: Maven Integration for Eclipse
+

@@ -1,0 +1,20 @@
+package com.merchant.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.merchant.dao.MerchantsAccountRetailersMapper;
+import com.merchant.service.MerchantsAccountRetailersService;
+
+@Service
+public class MerchantsAccountRetailersServiceImpl implements MerchantsAccountRetailersService {
+	
+	@Autowired
+	private MerchantsAccountRetailersMapper merchantsAccountRetailersMapper;
+	
+ 
+	
+ 
+	
+
+}

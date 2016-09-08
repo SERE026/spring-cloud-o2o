@@ -1,0 +1,33 @@
+package com.merchant.model;
+
+public class MerchantsWxSupplier {
+    private Integer id;
+
+    private Integer merchantsId;
+
+    private Integer mpId;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getMerchantsId() {
+        return merchantsId;
+    }
+
+    public void setMerchantsId(Integer merchantsId) {
+        this.merchantsId = merchantsId;
+    }
+
+    public Integer getMpId() {
+        return mpId;
+    }
+
+    public void setMpId(Integer mpId) {
+        this.mpId = mpId;
+    }
+}

@@ -1,0 +1,63 @@
+package com.didispace.model;
+
+public class Customer {
+    private Integer id;
+
+    private String type;
+
+    private Integer cId;
+
+    private String fileType;
+
+    private Double fileSize;
+
+    private byte[] fileinfo;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
+    }
+
+    public Integer getcId() {
+        return cId;
+    }
+
+    public void setcId(Integer cId) {
+        this.cId = cId;
+    }
+
+    public String getFileType() {
+        return fileType;
+    }
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType == null ? null : fileType.trim();
+    }
+
+    public Double getFileSize() {
+        return fileSize;
+    }
+
+    public void setFileSize(Double fileSize) {
+        this.fileSize = fileSize;
+    }
+
+    public byte[] getFileinfo() {
+        return fileinfo;
+    }
+
+    public void setFileinfo(byte[] fileinfo) {
+        this.fileinfo = fileinfo;
+    }
+}

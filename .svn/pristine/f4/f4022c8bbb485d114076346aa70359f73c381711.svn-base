@@ -1,0 +1,9 @@
+package com.merchant.dao;
+
+import com.merchant.model.Hotel;
+
+public interface HotelMapper {
+    int insert(Hotel record);
+
+    int insertSelective(Hotel record);
+}

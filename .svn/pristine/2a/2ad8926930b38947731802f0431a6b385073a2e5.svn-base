@@ -1,0 +1,54 @@
+package com.merchant.service.impl;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.merchant.dao.MerchantsMpSupplierMapper;
+import com.merchant.dto.ResultMessage;
+import com.merchant.model.MerchantsMpSupplier;
+import com.merchant.service.MerchantsMpSupplierService;
+
+@Service
+public class MerchantsMpSupplierServiceImpl implements MerchantsMpSupplierService {
+	
+	private final Logger logger = Logger.getLogger(getClass());
+	
+	@Autowired
+	private MerchantsMpSupplierMapper mtsMpSupplierMapper; 
+
+	@Override
+	public ResultMessage add(MerchantsMpSupplier data) {
+		try {
+			mtsMpSupplierMapper.insertSelective(data);
+		} catch (Exception e) {
+			logger.error("插入数据库失败", e);
+			return new ResultMessage(false,"插入数据库失败！");
+		}
+		
+		return new ResultMessage(true,"插入数据库成功！");
+	}
+
+	@Override
+	public ResultMessage delete(Integer mpId, Integer merchantsId) {
+		int count = 0;
+		try {
+			count = mtsMpSupplierMapper.deleteByMapIdAndMerchantsId(mpId,merchantsId);
+		} catch (Exception e) {
+			logger.error("删除公众号和商户关系记录失败", e);
+			return new ResultMessage(false,"删除公众号和商户关系记录失败！");
+		}
+		if (count == 0) {
+			return new ResultMessage(false,"删除公众号和商户关系记录失败！");
+		}
+		
+		return new ResultMessage(true,"删除公众号和商户关系记录失败成功！");
+	}
+
+	 
+ 
+	
+ 
+	
+
+}

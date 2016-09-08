@@ -1,0 +1,33 @@
+package com.merchant.model;
+
+public class MerchantsAccountMp {
+    private Integer id;
+
+    private Integer accountId;
+
+    private Integer mpId;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
+    }
+
+    public Integer getMpId() {
+        return mpId;
+    }
+
+    public void setMpId(Integer mpId) {
+        this.mpId = mpId;
+    }
+}

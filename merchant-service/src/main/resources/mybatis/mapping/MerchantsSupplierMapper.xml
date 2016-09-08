@@ -1,0 +1,355 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.merchant.dao.MerchantsSupplierMapper">
+	<resultMap id="BaseResultMap" type="com.merchant.model.MerchantsSupplier">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="merchants_name" property="merchantsName"
+			jdbcType="VARCHAR" />
+		<result column="province" property="province" jdbcType="VARCHAR" />
+		<result column="city" property="city" jdbcType="VARCHAR" />
+		<result column="area" property="area" jdbcType="VARCHAR" />
+		<result column="address" property="address" jdbcType="VARCHAR" />
+		<result column="longitude" property="longitude" jdbcType="VARCHAR" />
+		<result column="latitude" property="latitude" jdbcType="VARCHAR" />
+		<result column="contact" property="contact" jdbcType="VARCHAR" />
+		<result column="phone" property="phone" jdbcType="VARCHAR" />
+		<result column="audit_status" property="auditStatus" jdbcType="VARCHAR" />
+		<result column="id_card" property="idCard" jdbcType="VARCHAR" />
+		<result column="id_card_url" property="idCardUrl" jdbcType="VARCHAR" />
+		<result column="business_license" property="businessLicense"
+			jdbcType="VARCHAR" />
+		<result column="parent_id" property="parentId" jdbcType="VARCHAR" />
+		<result column="payment_channel" property="paymentChannel"
+			jdbcType="VARCHAR" />
+		<result column="supllier_type" property="supllierType"
+			jdbcType="VARCHAR" />
+		<result column="store_state" property="storeState" jdbcType="VARCHAR" />
+		<result column="service_radius" property="serviceRadius"
+			jdbcType="VARCHAR" />
+		<result column="merchants_logo_url" property="merchantsLogoUrl"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, merchants_name, province, city, area, address, longitude, latitude,
+		contact,
+		phone, audit_status, id_card, id_card_url, business_license, parent_id,
+		payment_channel,
+		supllier_type, store_state, service_radius, merchants_logo_url
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from t_merchants_supplier
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from t_merchants_supplier
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.merchant.model.MerchantsSupplier">
+		insert into t_merchants_supplier (id, merchants_name, province,
+		city, area, address,
+		longitude, latitude, contact,
+		phone, audit_status, id_card,
+		id_card_url, business_license, parent_id,
+		payment_channel, supllier_type, store_state,
+		service_radius, merchants_logo_url)
+		values (#{id,jdbcType=INTEGER}, #{merchantsName,jdbcType=VARCHAR},
+		#{province,jdbcType=VARCHAR},
+		#{city,jdbcType=VARCHAR}, #{area,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR},
+		#{longitude,jdbcType=VARCHAR}, #{latitude,jdbcType=VARCHAR},
+		#{contact,jdbcType=VARCHAR},
+		#{phone,jdbcType=VARCHAR}, #{auditStatus,jdbcType=VARCHAR}, #{idCard,jdbcType=VARCHAR},
+		#{idCardUrl,jdbcType=VARCHAR}, #{businessLicense,jdbcType=VARCHAR},
+		#{parentId,jdbcType=VARCHAR},
+		#{paymentChannel,jdbcType=VARCHAR}, #{supllierType,jdbcType=VARCHAR}, #{storeState,jdbcType=VARCHAR},
+		#{serviceRadius,jdbcType=VARCHAR},
+		#{merchantsLogoUrl,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective" parameterType="com.merchant.model.MerchantsSupplier">
+		insert into t_merchants_supplier
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="merchantsName != null">
+				merchants_name,
+			</if>
+			<if test="province != null">
+				province,
+			</if>
+			<if test="city != null">
+				city,
+			</if>
+			<if test="area != null">
+				area,
+			</if>
+			<if test="address != null">
+				address,
+			</if>
+			<if test="longitude != null">
+				longitude,
+			</if>
+			<if test="latitude != null">
+				latitude,
+			</if>
+			<if test="contact != null">
+				contact,
+			</if>
+			<if test="phone != null">
+				phone,
+			</if>
+			<if test="auditStatus != null">
+				audit_status,
+			</if>
+			<if test="idCard != null">
+				id_card,
+			</if>
+			<if test="idCardUrl != null">
+				id_card_url,
+			</if>
+			<if test="businessLicense != null">
+				business_license,
+			</if>
+			<if test="parentId != null">
+				parent_id,
+			</if>
+			<if test="paymentChannel != null">
+				payment_channel,
+			</if>
+			<if test="supllierType != null">
+				supllier_type,
+			</if>
+			<if test="storeState != null">
+				store_state,
+			</if>
+			<if test="serviceRadius != null">
+				service_radius,
+			</if>
+			<if test="merchantsLogoUrl != null">
+				merchants_logo_url,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="merchantsName != null">
+				#{merchantsName,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				#{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				#{city,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				#{area,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				#{address,jdbcType=VARCHAR},
+			</if>
+			<if test="longitude != null">
+				#{longitude,jdbcType=VARCHAR},
+			</if>
+			<if test="latitude != null">
+				#{latitude,jdbcType=VARCHAR},
+			</if>
+			<if test="contact != null">
+				#{contact,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				#{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="auditStatus != null">
+				#{auditStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="idCard != null">
+				#{idCard,jdbcType=VARCHAR},
+			</if>
+			<if test="idCardUrl != null">
+				#{idCardUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="businessLicense != null">
+				#{businessLicense,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				#{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="paymentChannel != null">
+				#{paymentChannel,jdbcType=VARCHAR},
+			</if>
+			<if test="supllierType != null">
+				#{supllierType,jdbcType=VARCHAR},
+			</if>
+			<if test="storeState != null">
+				#{storeState,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceRadius != null">
+				#{serviceRadius,jdbcType=VARCHAR},
+			</if>
+			<if test="merchantsLogoUrl != null">
+				#{merchantsLogoUrl,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.merchant.model.MerchantsSupplier">
+		update t_merchants_supplier
+		<set>
+			<if test="merchantsName != null">
+				merchants_name = #{merchantsName,jdbcType=VARCHAR},
+			</if>
+			<if test="province != null">
+				province = #{province,jdbcType=VARCHAR},
+			</if>
+			<if test="city != null">
+				city = #{city,jdbcType=VARCHAR},
+			</if>
+			<if test="area != null">
+				area = #{area,jdbcType=VARCHAR},
+			</if>
+			<if test="address != null">
+				address = #{address,jdbcType=VARCHAR},
+			</if>
+			<if test="longitude != null">
+				longitude = #{longitude,jdbcType=VARCHAR},
+			</if>
+			<if test="latitude != null">
+				latitude = #{latitude,jdbcType=VARCHAR},
+			</if>
+			<if test="contact != null">
+				contact = #{contact,jdbcType=VARCHAR},
+			</if>
+			<if test="phone != null">
+				phone = #{phone,jdbcType=VARCHAR},
+			</if>
+			<if test="auditStatus != null">
+				audit_status = #{auditStatus,jdbcType=VARCHAR},
+			</if>
+			<if test="idCard != null">
+				id_card = #{idCard,jdbcType=VARCHAR},
+			</if>
+			<if test="idCardUrl != null">
+				id_card_url = #{idCardUrl,jdbcType=VARCHAR},
+			</if>
+			<if test="businessLicense != null">
+				business_license = #{businessLicense,jdbcType=VARCHAR},
+			</if>
+			<if test="parentId != null">
+				parent_id = #{parentId,jdbcType=VARCHAR},
+			</if>
+			<if test="paymentChannel != null">
+				payment_channel = #{paymentChannel,jdbcType=VARCHAR},
+			</if>
+			<if test="supllierType != null">
+				supllier_type = #{supllierType,jdbcType=VARCHAR},
+			</if>
+			<if test="storeState != null">
+				store_state = #{storeState,jdbcType=VARCHAR},
+			</if>
+			<if test="serviceRadius != null">
+				service_radius = #{serviceRadius,jdbcType=VARCHAR},
+			</if>
+			<if test="merchantsLogoUrl != null">
+				merchants_logo_url = #{merchantsLogoUrl,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.merchant.model.MerchantsSupplier">
+		update t_merchants_supplier
+		set merchants_name = #{merchantsName,jdbcType=VARCHAR},
+		province = #{province,jdbcType=VARCHAR},
+		city = #{city,jdbcType=VARCHAR},
+		area = #{area,jdbcType=VARCHAR},
+		address = #{address,jdbcType=VARCHAR},
+		longitude = #{longitude,jdbcType=VARCHAR},
+		latitude = #{latitude,jdbcType=VARCHAR},
+		contact = #{contact,jdbcType=VARCHAR},
+		phone = #{phone,jdbcType=VARCHAR},
+		audit_status = #{auditStatus,jdbcType=VARCHAR},
+		id_card = #{idCard,jdbcType=VARCHAR},
+		id_card_url = #{idCardUrl,jdbcType=VARCHAR},
+		business_license = #{businessLicense,jdbcType=VARCHAR},
+		parent_id = #{parentId,jdbcType=VARCHAR},
+		payment_channel = #{paymentChannel,jdbcType=VARCHAR},
+		supllier_type = #{supllierType,jdbcType=VARCHAR},
+		store_state = #{storeState,jdbcType=VARCHAR},
+		service_radius = #{serviceRadius,jdbcType=VARCHAR},
+		merchants_logo_url = #{merchantsLogoUrl,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+
+	<select id="queryByPage" resultMap="BaseResultMap"
+		parameterType="com.merchant.form.CommonFrom">
+		select
+		id, merchants_name, province,
+		city, area, address,
+		longitude, latitude, contact,
+		phone, audit_status, id_card,
+		id_card_url, business_license, parent_id,
+		payment_channel, supllier_type, store_state,
+		service_radius, merchants_logo_url
+		from t_merchants_supplier
+		where 1=1
+		<if test="queryConditions.province != null">
+			and province = #{queryConditions.province}
+		</if>
+		<if test="queryConditions.city != null">
+			and city = #{queryConditions.city}
+		</if>
+		<if test="queryConditions.area != null">
+			and area = #{queryConditions.area}
+		</if>
+		<if test="queryConditions.address != null">
+			and address = #{queryConditions.address}
+		</if>
+		<if test="queryConditions.longitude != null">
+			and longitude = #{queryConditions.longitude}
+		</if>
+		<if test="queryConditions.latitude != null">
+			and latitude = #{queryConditions.latitude}
+		</if>
+		<if test="queryConditions.idCardUrl != null">
+			and id_card_url = #{queryConditions.idCardUrl}
+		</if>
+		<if test="queryConditions.businessLicense != null">
+			and business_license = #{queryConditions.businessLicense}
+		</if>
+		<if test="queryConditions.serviceRadius != null">
+			and service_radius = #{queryConditions.serviceRadius}
+		</if>
+		<if test="queryConditions.merchantsLogoUrl != null">
+			and merchants_logo_url = #{queryConditions.merchantsLogoUrl}
+		</if>
+		<if test="queryConditions.merchantsName != null and queryConditions.merchantsName !='' ">
+			and merchants_name = #{queryConditions.merchantsName}
+		</if>
+		<if test="queryConditions.parentId != null and queryConditions.parentId !='' ">
+			and parent_id = #{queryConditions.parentId}
+		</if>
+		<if test="queryConditions.paymentChannel != null and queryConditions.paymentChannel !='' ">
+			and payment_channel = #{queryConditions.paymentChannel}
+		</if>
+		<if test="queryConditions.supllierType != null and queryConditions.supllierType !='' ">
+			and supllier_type = #{queryConditions.supllierType}
+		</if>
+		<if test="queryConditions.storeState != null and queryConditions.storeState !='' ">
+			and store_state = #{queryConditions.storeState}
+		</if>
+		<if test="queryConditions.contact != null and queryConditions.contact !='' ">
+			and contact = #{queryConditions.contact}
+		</if>
+		<if test="queryConditions.phone != null and queryConditions.phone !='' ">
+			and phone = #{queryConditions.phone}
+		</if>
+		<if test="queryConditions.auditStatus != null and queryConditions.auditStatus !='' ">
+			and audit_status = #{queryConditions.auditStatus}
+		</if>
+		<if test="queryConditions.idCard != null and queryConditions.idCard !='' ">
+			and id_card = #{queryConditions.idCard}
+		</if>
+		limit ${offset},${pageSize}
+	</select>
+</mapper>

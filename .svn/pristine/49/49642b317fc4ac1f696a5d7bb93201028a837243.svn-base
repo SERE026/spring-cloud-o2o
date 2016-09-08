@@ -1,0 +1,9 @@
+package com.didispace.dao;
+
+import com.didispace.model.Hotel;
+
+public interface HotelMapper {
+    int insert(Hotel record);
+
+    int insertSelective(Hotel record);
+}

@@ -1,0 +1,38 @@
+package com.merchant.model;
+
+/**
+ * 账户与零售商 关联表
+ * @author luoqw
+ * 2016-9-5下午3:41:52
+ */
+public class MerchantsAccountRetailers {
+    private Integer id;
+
+    private Integer merchants;
+
+    private Integer accountId;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getMerchants() {
+        return merchants;
+    }
+
+    public void setMerchants(Integer merchants) {
+        this.merchants = merchants;
+    }
+
+    public Integer getAccountId() {
+        return accountId;
+    }
+
+    public void setAccountId(Integer accountId) {
+        this.accountId = accountId;
+    }
+}

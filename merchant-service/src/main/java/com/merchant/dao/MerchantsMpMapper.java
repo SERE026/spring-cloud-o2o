@@ -1,0 +1,29 @@
+package com.merchant.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.merchant.form.MerchantsMpForm;
+import com.merchant.model.MerchantsMp;
+
+public interface MerchantsMpMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(MerchantsMp record);
+
+    int insertSelective(MerchantsMp record);
+
+    MerchantsMp selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(MerchantsMp record);
+
+    int updateByPrimaryKey(MerchantsMp record);
+
+	List<MerchantsMp> queryByPage(MerchantsMpForm form);
+
+	List<MerchantsMp> queryByPageForMerchants(
+			@Param("merchantsId")Integer merchantsId,
+			@Param("offset")Integer offset, 
+			@Param("pageSize")Integer pageSize);
+}

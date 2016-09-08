@@ -1,0 +1,17 @@
+package com.merchant.dao;
+
+import com.merchant.model.MerchantsAccountMp;
+
+public interface MerchantsAccountMpMapper {
+    int deleteByPrimaryKey(Integer id);
+
+    int insert(MerchantsAccountMp record);
+
+    int insertSelective(MerchantsAccountMp record);
+
+    MerchantsAccountMp selectByPrimaryKey(Integer id);
+
+    int updateByPrimaryKeySelective(MerchantsAccountMp record);
+
+    int updateByPrimaryKey(MerchantsAccountMp record);
+}

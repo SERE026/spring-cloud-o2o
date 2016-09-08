@@ -1,0 +1,12 @@
+package com.merchant.service;
+
+import com.merchant.dto.ResultMessage;
+import com.merchant.model.MerchantsSupplier;
+
+
+public interface MerchantsSupplierService {
+
+	ResultMessage add(MerchantsSupplier data);
+	 
+	
+}

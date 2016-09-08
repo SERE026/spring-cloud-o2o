@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.merchant.dao.MerchantsAccountMapper" >
+  <resultMap id="BaseResultMap" type="com.merchant.model.MerchantsAccount" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="use_status" property="useStatus" jdbcType="VARCHAR" />
+    <result column="allow_count" property="allowCount" jdbcType="INTEGER" />
+    <result column="pass_keyword" property="passKeyword" jdbcType="VARCHAR" />
+    <result column="account_type" property="accountType" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, account, password, use_status, allow_count, pass_keyword, account_type
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_merchants_account
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_merchants_account
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.merchant.model.MerchantsAccount" >
+    insert into t_merchants_account (id, account, password, 
+      use_status, allow_count, pass_keyword, 
+      account_type)
+    values (#{id,jdbcType=INTEGER}, #{account,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{useStatus,jdbcType=VARCHAR}, #{allowCount,jdbcType=INTEGER}, #{passKeyword,jdbcType=VARCHAR}, 
+      #{accountType,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.merchant.model.MerchantsAccount" >
+    insert into t_merchants_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="password != null" >
+        password,
+      </if>
+      <if test="useStatus != null" >
+        use_status,
+      </if>
+      <if test="allowCount != null" >
+        allow_count,
+      </if>
+      <if test="passKeyword != null" >
+        pass_keyword,
+      </if>
+      <if test="accountType != null" >
+        account_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="useStatus != null" >
+        #{useStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="allowCount != null" >
+        #{allowCount,jdbcType=INTEGER},
+      </if>
+      <if test="passKeyword != null" >
+        #{passKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        #{accountType,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.merchant.model.MerchantsAccount" >
+    update t_merchants_account
+    <set >
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="useStatus != null" >
+        use_status = #{useStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="allowCount != null" >
+        allow_count = #{allowCount,jdbcType=INTEGER},
+      </if>
+      <if test="passKeyword != null" >
+        pass_keyword = #{passKeyword,jdbcType=VARCHAR},
+      </if>
+      <if test="accountType != null" >
+        account_type = #{accountType,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.merchant.model.MerchantsAccount" >
+    update t_merchants_account
+    set account = #{account,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      use_status = #{useStatus,jdbcType=VARCHAR},
+      allow_count = #{allowCount,jdbcType=INTEGER},
+      pass_keyword = #{passKeyword,jdbcType=VARCHAR},
+      account_type = #{accountType,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

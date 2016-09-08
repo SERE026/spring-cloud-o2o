@@ -1,0 +1,21 @@
+package com.merchant.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.merchant.dao.MerchantsWxRetailerMapper;
+import com.merchant.service.MerchantsWxRetailerService;
+ 
+
+@Service
+public class MerchantsWxRetailerServiceImpl implements MerchantsWxRetailerService {
+	
+	@Autowired
+	private MerchantsWxRetailerMapper merchantsWxRetailerMapper;
+	
+ 
+	
+ 
+	
+
+}
