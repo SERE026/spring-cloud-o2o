@@ -1,0 +1,92 @@
+package com.merchant.web;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.alibaba.fastjson.JSONObject;
+import com.merchant.dto.BaseDetailDto;
+import com.merchant.dto.BaseDto;
+import com.merchant.dto.BaseQueryDto;
+import com.merchant.dto.ResultMessage;
+import com.merchant.form.CommonFrom;
+import com.merchant.form.MerchantsMessageBean;
+import com.merchant.model.MerchantsMessage;
+import com.merchant.service.MerchantsMessageService;
+import com.merchant.util.RequestUtil;
+
+@RestController
+@SuppressWarnings("unchecked")
+public class MerchantsMessageController {
+
+	private final Logger logger = Logger.getLogger(getClass());
+
+
+	@Autowired
+	private MerchantsMessageService merchantsMessageService;
+
+	@RequestMapping(value = "/message/add")
+	public Object add(HttpServletRequest request){
+		String jsonText = RequestUtil.readPostContent(request); 
+		logger.warn("/message/add入参："+jsonText);
+		MerchantsMessage data = JSONObject.parseObject(jsonText, MerchantsMessage.class);
+		data.setCreateDate(new Date());
+		ResultMessage result = merchantsMessageService.add(data);
+		if (result.isSuccess()) {
+			return new BaseDto("success","10000");
+		}
+
+		return new BaseDto("success","90001");
+	}
+	
+	@RequestMapping(value = "/message/update")
+	public Object update(HttpServletRequest request){
+		String jsonText = RequestUtil.readPostContent(request); 
+		logger.warn("/message/update入参："+jsonText);
+		MerchantsMessage data = JSONObject.parseObject(jsonText, MerchantsMessage.class);
+		ResultMessage result = merchantsMessageService.update(data);
+		if (result.isSuccess()) {
+			return new BaseDto("success","10000");
+		}
+		
+		return new BaseDto("success","90001");
+	}
+
+	
+	@RequestMapping(value = "/message/get")
+	public Object get(Integer id){
+		 
+		ResultMessage result = merchantsMessageService.findById(id);
+		if (result.isSuccess()) {
+			MerchantsMessage message = (MerchantsMessage) result.getData();
+			return new BaseDetailDto<MerchantsMessage>("success", "10000", message);
+		}
+
+		return new BaseDetailDto<MerchantsMessage>("success", "90001", "查询失败");
+	}
+	
+	
+
+	@RequestMapping(value = "/message/list")
+	public Object list(HttpServletRequest request) {
+		String jsonText = RequestUtil.readPostContent(request); 
+
+		logger.warn("/message/list入参:"+jsonText);
+		CommonFrom<MerchantsMessageBean> form = JSONObject.parseObject(jsonText, CommonFrom.class); 
+		ResultMessage result =    merchantsMessageService.queryByPage(form);
+		if (result.isSuccess()) {
+			List<MerchantsMessage> list  =   (List<MerchantsMessage>) result.getData();
+			return new BaseQueryDto<MerchantsMessage>("success", "10000",form.getOffset(),form.getPageSize(), list);
+		}
+
+		return new BaseQueryDto<MerchantsMessage>("success", "90001", "查询失败",form.getOffset(),form.getPageSize());
+		 
+	}
+	
+}

@@ -1,0 +1,48 @@
+package com.merchant.service.impl;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.merchant.dao.MerchantsMessageMapper;
+import com.merchant.dto.ResultMessage;
+import com.merchant.form.CommonFrom;
+import com.merchant.form.MerchantsMessageBean;
+import com.merchant.model.MerchantsMessage;
+import com.merchant.service.MerchantsMessageService;
+
+@Service
+public class MerchantsMessageImpl implements MerchantsMessageService {
+	
+	private final Logger logger = Logger.getLogger(getClass());
+	
+	@Autowired
+	private MerchantsMessageMapper merchantsMessageMapper;
+
+	@Override
+	public ResultMessage add(MerchantsMessage data) {
+		try {
+			merchantsMessageMapper.insertSelective(data);
+		} catch (Exception e) {
+			logger.error("添加商户记录失败", e);
+			return new ResultMessage(false,"插入数据库失败！");
+		}
+		
+		return new ResultMessage(true,"插入数据库成功！");
+	}
+
+	@Override
+	public List queryByPage(CommonFrom<MerchantsMessageBean> form) {
+		
+		return merchantsMessageMapper.queryByPage(form);
+		
+	}
+	
+ 
+	
+ 
+	
+
+}

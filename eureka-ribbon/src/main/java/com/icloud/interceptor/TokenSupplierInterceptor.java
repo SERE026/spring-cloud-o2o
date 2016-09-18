@@ -1,0 +1,75 @@
+package com.icloud.interceptor;
+
+import java.io.IOException;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.alibaba.fastjson.JSONObject;
+import com.icloud.common.ServiceUrlContants;
+import com.icloud.dto.BaseResponseDto;
+import com.icloud.model.MerchantsAccount;
+
+/**
+ * token拦截器
+ * @author luoqw
+ * 2016-9-7下午6:05:59
+ */
+public class TokenSupplierInterceptor implements HandlerInterceptor{
+	@Autowired
+	public RestTemplate restTemplate;
+	@Override
+	public void afterCompletion(HttpServletRequest reqeust, HttpServletResponse response, Object arg2, Exception arg3)
+			throws Exception {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public void postHandle(HttpServletRequest reqeust, HttpServletResponse response, Object arg2, ModelAndView arg3)
+			throws Exception {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public boolean preHandle(HttpServletRequest reqeust, HttpServletResponse response, Object arg2) throws Exception {
+		boolean ckToken = false;
+		String access_token = reqeust.getParameter("access_token");
+		MerchantsAccount account = null;
+		String url = ServiceUrlContants.token_server_domain+"/"
+				+"/userInfo?grant_type=merchants_credential&&access_toen="+access_token;
+		String result  = restTemplate.getForObject(url, String.class);
+		
+		JSONObject jsonObj = JSONObject.parseObject(result);
+		String resultType = (String) jsonObj.get("resultType");
+		String resultCode = (String) jsonObj.get("resultCode");
+		if ("success".endsWith(resultType) && "10000".endsWith(resultCode) ) {
+			String userInfo = (String) jsonObj.get("userInfo");
+			account = JSONObject.parseObject(userInfo,MerchantsAccount.class);
+			ckToken = true;
+			reqeust.setAttribute("merchants", account);
+		}else{
+			ckToken = false; 
+			try {
+				BaseResponseDto dto = new BaseResponseDto("success", "4002", "token失效");
+				response.setContentType("text/html;charset=UTF-8");
+				response.getWriter().print(dto.toString());
+				response.getWriter().close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		
+		
+		
+		
+		return ckToken;
+	}
+
+}
