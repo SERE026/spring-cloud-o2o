@@ -1,42 +1,26 @@
-package com.icloud.dto;
+package com.merchant.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.icloud.model.MerchantsAccount;
-
+import com.merchant.model.MerchantsMp;
 
 /**
- * 公众号条件分页查询dto
- * @author luoqw
- * 2016-9-7上午10:11:30
+ * 列表查询结果dto
+ * 
+ * @author luoqw 2016-9-7上午10:11:30
  */
-public class MerchantsAccountQueryResDto {
+public class MpQueryDto {
 
 	private String resultType;
 	private String resultCode;
 	private String errorMsg;
 	private int offset = 1;
 	private int pageSize = 10;
-	private List<MerchantsAccount> accout = new ArrayList<MerchantsAccount>();
+	private List<MerchantsMp> mps = new ArrayList<MerchantsMp>();
 
-	public MerchantsAccountQueryResDto() {
-		super();
-	}
-
-	
-	public MerchantsAccountQueryResDto(String resultType, String resultCode, int offset, int pageSize,
-			List<MerchantsAccount> accout) {
-		super();
-		this.resultType = resultType;
-		this.resultCode = resultCode;
-		this.offset = offset;
-		this.pageSize = pageSize;
-		this.accout = accout;
-	}
-
-
-	public MerchantsAccountQueryResDto(String resultType, String resultCode, String errorMsg, int offset, int pageSize) {
+	public MpQueryDto(String resultType, String resultCode, String errorMsg,
+			int offset, int pageSize) {
 		super();
 		this.resultType = resultType;
 		this.resultCode = resultCode;
@@ -45,6 +29,15 @@ public class MerchantsAccountQueryResDto {
 		this.pageSize = pageSize;
 	}
 
+	public MpQueryDto(String resultType, String resultCode, int offset,
+			int pageSize, List<MerchantsMp> mps) {
+		super();
+		this.resultType = resultType;
+		this.resultCode = resultCode;
+		this.offset = offset;
+		this.pageSize = pageSize;
+		this.mps = mps;
+	}
 
 	public String getResultType() {
 		return resultType;
@@ -86,14 +79,12 @@ public class MerchantsAccountQueryResDto {
 		this.pageSize = pageSize;
 	}
 
-	public List<MerchantsAccount> getAccout() {
-		return accout;
+	public List<MerchantsMp> getMps() {
+		return mps;
 	}
 
-	public void setAccout(List<MerchantsAccount> accout) {
-		this.accout = accout;
+	public void setMps(List<MerchantsMp> mps) {
+		this.mps = mps;
 	}
-
- 
 
 }

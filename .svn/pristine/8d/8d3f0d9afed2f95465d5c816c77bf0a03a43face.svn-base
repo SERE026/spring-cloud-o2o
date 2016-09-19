@@ -1,26 +1,28 @@
-package com.icloud.dto;
+package com.merchant.dto;
 
-public class BaseResponseDto {
+import com.merchant.model.MerchantsSupplier;
+
+public class SupplierDetailDto {
 
 	private String resultType;
 	private String resultCode;
 	private String errorMsg;
+	private MerchantsSupplier supplier;
 
-	public BaseResponseDto() {
-
-	}
-
-	public BaseResponseDto(String resultType, String resultCode) {
-		super();
-		this.resultType = resultType;
-		this.resultCode = resultCode;
-	}
-
-	public BaseResponseDto(String resultType, String resultCode, String errorMsg) {
+	public SupplierDetailDto(String resultType, String resultCode,
+			String errorMsg) {
 		super();
 		this.resultType = resultType;
 		this.resultCode = resultCode;
 		this.errorMsg = errorMsg;
+	}
+
+	public SupplierDetailDto(String resultType, String resultCode,
+			MerchantsSupplier supplier) {
+		super();
+		this.resultType = resultType;
+		this.resultCode = resultCode;
+		this.supplier = supplier;
 	}
 
 	public String getResultType() {
@@ -45,6 +47,14 @@ public class BaseResponseDto {
 
 	public void setErrorMsg(String errorMsg) {
 		this.errorMsg = errorMsg;
+	}
+
+	public MerchantsSupplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(MerchantsSupplier supplier) {
+		this.supplier = supplier;
 	}
 
 }

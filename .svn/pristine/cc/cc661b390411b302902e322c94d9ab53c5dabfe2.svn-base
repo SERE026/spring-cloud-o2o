@@ -1,32 +1,32 @@
 package com.icloud.dto;
 
+import com.icloud.model.MerchantsMp;
 
 /**
- * 商户帐户是否存在Dto
+ * 公众号详情Dto
+ * 
  * @author luoqw 2016-9-7上午10:10:57
  */
-public class MerchantsAccountCheckResDto {
-	private String resultType;
-	private String resultCode;
-	private String errorMsg;
-	private boolean resultCheck;
+public class MpDetailDto extends BaseDto {
 
-	public MerchantsAccountCheckResDto() {
+	private MerchantsMp mp;
+
+	public MpDetailDto() {
 		super();
 	}
 
-	public MerchantsAccountCheckResDto(String resultType, String resultCode, String errorMsg) {
+	public MpDetailDto(String resultType, String resultCode, String errorMsg) {
 		super();
 		this.resultType = resultType;
 		this.resultCode = resultCode;
 		this.errorMsg = errorMsg;
 	}
 
-	public MerchantsAccountCheckResDto(String resultType, String resultCode, boolean resultCheck) {
+	public MpDetailDto(String resultType, String resultCode, MerchantsMp mp) {
 		super();
 		this.resultType = resultType;
 		this.resultCode = resultCode;
-		this.resultCheck = resultCheck;
+		this.mp = mp;
 	}
 
 	public String getResultType() {
@@ -53,12 +53,12 @@ public class MerchantsAccountCheckResDto {
 		this.errorMsg = errorMsg;
 	}
 
-	public boolean isResultCheck() {
-		return resultCheck;
+	public MerchantsMp getMp() {
+		return mp;
 	}
 
-	public void setResultCheck(boolean resultCheck) {
-		this.resultCheck = resultCheck;
+	public void setMp(MerchantsMp mp) {
+		this.mp = mp;
 	}
 
 }

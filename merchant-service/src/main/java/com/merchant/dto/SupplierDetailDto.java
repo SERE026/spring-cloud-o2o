@@ -1,35 +1,28 @@
-package com.icloud.dto;
+package com.merchant.dto;
 
-import com.icloud.model.MerchantsMp;
+import com.merchant.model.MerchantsSupplier;
 
-/**
- * 公众号详情Dto
- * 
- * @author luoqw 2016-9-7上午10:10:57
- */
-public class MpDetailResponseDto {
+public class SupplierDetailDto {
 
 	private String resultType;
 	private String resultCode;
 	private String errorMsg;
-	private MerchantsMp mp;
+	private MerchantsSupplier supplier;
 
-	public MpDetailResponseDto() {
-		super();
-	}
-
-	public MpDetailResponseDto(String resultType, String resultCode, String errorMsg) {
+	public SupplierDetailDto(String resultType, String resultCode,
+			String errorMsg) {
 		super();
 		this.resultType = resultType;
 		this.resultCode = resultCode;
 		this.errorMsg = errorMsg;
 	}
 
-	public MpDetailResponseDto(String resultType, String resultCode, MerchantsMp mp) {
+	public SupplierDetailDto(String resultType, String resultCode,
+			MerchantsSupplier supplier) {
 		super();
 		this.resultType = resultType;
 		this.resultCode = resultCode;
-		this.mp = mp;
+		this.supplier = supplier;
 	}
 
 	public String getResultType() {
@@ -56,12 +49,12 @@ public class MpDetailResponseDto {
 		this.errorMsg = errorMsg;
 	}
 
-	public MerchantsMp getMp() {
-		return mp;
+	public MerchantsSupplier getSupplier() {
+		return supplier;
 	}
 
-	public void setMp(MerchantsMp mp) {
-		this.mp = mp;
+	public void setSupplier(MerchantsSupplier supplier) {
+		this.supplier = supplier;
 	}
 
 }

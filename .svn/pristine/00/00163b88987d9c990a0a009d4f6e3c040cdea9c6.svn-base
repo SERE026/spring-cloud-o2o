@@ -1,23 +1,17 @@
-package com.icloud.dto;
+package com.merchant.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.icloud.model.MerchantsMessage;
 
 /**
- * 消息条件分页查询dto
- * @author luoqw 
- * 2016-9-7上午10:11:30
+ * 列表查询结果dto
+ * @author luoqw 2016-9-7上午10:11:30 
  */
-public class MerchantsMessageQueryResDto {
+public class BaseQueryDto {
 
-	private String resultType;
-	private String resultCode;
-	private String errorMsg;
-	private int offset = 1;
-	private int pageSize = 10;
-	private List<MerchantsMessage> message = new ArrayList<MerchantsMessage>();
+	protected String resultType;
+	protected String resultCode;
+	protected String errorMsg;
+	protected int offset = 1;
+	protected int pageSize = 10;
 
 	public String getResultType() {
 		return resultType;
@@ -57,14 +51,6 @@ public class MerchantsMessageQueryResDto {
 
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
-	}
-
-	public List<MerchantsMessage> getMessage() {
-		return message;
-	}
-
-	public void setMessage(List<MerchantsMessage> message) {
-		this.message = message;
 	}
 
 }

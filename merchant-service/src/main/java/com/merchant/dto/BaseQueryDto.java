@@ -1,45 +1,17 @@
 package com.merchant.dto;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.merchant.model.MerchantsMessage;
 
 /**
  * 列表查询结果dto
- * @author luoqw 
- * 2016-9-7上午10:11:30
- * @param <T>
+ * @author luoqw 2016-9-7上午10:11:30 
  */
-public class BaseQueryDto<T> {
-	
-	private String resultType;
-	private String resultCode;
-	private String errorMsg;
-	private int offset = 1;
-	private int pageSize = 10;
-	private List<T> list = new ArrayList<T>();
+public class BaseQueryDto {
 
-	public BaseQueryDto(String resultType, String resultCode, String errorMsg, int offset, int pageSize) {
-		super();
-		this.resultType = resultType;
-		this.resultCode = resultCode;
-		this.errorMsg = errorMsg;
-		this.offset = offset;
-		this.pageSize = pageSize;
-	}
-	
-
-	public BaseQueryDto(String resultType, String resultCode, int offset, int pageSize, List<T> list) {
-		super();
-		this.resultType = resultType;
-		this.resultCode = resultCode;
-		this.offset = offset;
-		this.pageSize = pageSize;
-		this.list = list;
-	}
-
- 
+	protected String resultType;
+	protected String resultCode;
+	protected String errorMsg;
+	protected int offset = 1;
+	protected int pageSize = 10;
 
 	public String getResultType() {
 		return resultType;
@@ -79,14 +51,6 @@ public class BaseQueryDto<T> {
 
 	public void setPageSize(int pageSize) {
 		this.pageSize = pageSize;
-	}
-
-	public List<T> getList() {
-		return list;
-	}
-
-	public void setList(List<T> list) {
-		this.list = list;
 	}
 
 }

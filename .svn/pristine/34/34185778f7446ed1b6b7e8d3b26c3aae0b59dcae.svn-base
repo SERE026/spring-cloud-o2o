@@ -7,10 +7,8 @@ import com.icloud.model.MerchantsMessage;
  * 
  * @author luoqw 2016-9-7上午10:10:57
  */
-public class MerchantsMessageDetailResDto {
-	private String resultType;
-	private String resultCode;
-	private String errorMsg;
+public class MessageDetailDto extends BaseDto  {
+	 
 	private MerchantsMessage message;
 
 	public String getResultType() {
