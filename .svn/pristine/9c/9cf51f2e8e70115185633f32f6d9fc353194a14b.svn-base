@@ -1,0 +1,4 @@
+service_domain=http://MERCHANT-SERVICE
+#token过期时间
+expireTime=7200
+
